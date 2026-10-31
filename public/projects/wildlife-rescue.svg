@@ -1,0 +1,85 @@
+<svg width="1200" height="750" viewBox="0 0 1200 750" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Wildlife Identification and Rescue System placeholder</title>
+  <desc id="desc">A stylised graph and route-planning placeholder for the drone-assisted wildlife project.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="750" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#070D18"/>
+      <stop offset="1" stop-color="#0D1728"/>
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" stroke="#1E293B" stroke-width="1"/>
+    </pattern>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="750" fill="url(#bg)"/>
+  <rect width="1200" height="750" fill="url(#grid)" opacity="0.3"/>
+  <circle cx="310" cy="600" r="200" fill="#0EA5E9" opacity="0.06" filter="url(#glow)"/>
+  <circle cx="960" cy="180" r="160" fill="#F59E0B" opacity="0.05" filter="url(#glow)"/>
+
+  <rect x="96" y="104" width="1008" height="542" rx="22" fill="#0B1322" stroke="#233149"/>
+  <rect x="96" y="104" width="1008" height="56" rx="22" fill="#101B2E"/>
+  <rect x="96" y="138" width="1008" height="22" fill="#101B2E"/>
+  <circle cx="130" cy="132" r="5" fill="#334155"/>
+  <circle cx="150" cy="132" r="5" fill="#334155"/>
+  <circle cx="170" cy="132" r="5" fill="#334155"/>
+  <text x="130" y="198" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20" font-weight="600">Wildlife identification &amp; rescue planning</text>
+  <text x="130" y="222" fill="#64748B" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12">PROPOSED SYSTEM · ALGORITHMIC DESIGN</text>
+
+  <rect x="130" y="250" width="628" height="362" rx="14" fill="#08111F" stroke="#1E293B"/>
+  <path d="M200 520L296 430L390 466L486 350L590 392L700 300" stroke="#1E293B" stroke-width="1.5"/>
+  <path d="M200 340L310 286L420 330L530 268L650 324" stroke="#1E293B" stroke-width="1.5"/>
+  <path d="M296 430L310 286" stroke="#1E293B" stroke-width="1"/>
+  <path d="M390 466L420 330" stroke="#1E293B" stroke-width="1"/>
+  <path d="M486 350L530 268" stroke="#1E293B" stroke-width="1"/>
+  <path d="M590 392L650 324" stroke="#1E293B" stroke-width="1"/>
+  <path d="M200 520L296 430L390 466L486 350L590 392L700 300" stroke="#22D3EE" stroke-width="2.5" stroke-dasharray="9 7" opacity="0.85"/>
+  <path d="M200 340L310 286L420 330L530 268L650 324" stroke="#334155" stroke-width="1.5" stroke-dasharray="4 5" opacity="0.6"/>
+
+  <circle cx="200" cy="520" r="9" fill="#0B1322" stroke="#22D3EE" stroke-width="2"/>
+  <circle cx="296" cy="430" r="7" fill="#0B1322" stroke="#22D3EE" stroke-width="2"/>
+  <circle cx="390" cy="466" r="7" fill="#0B1322" stroke="#22D3EE" stroke-width="2"/>
+  <circle cx="486" cy="350" r="7" fill="#0B1322" stroke="#22D3EE" stroke-width="2"/>
+  <circle cx="590" cy="392" r="7" fill="#0B1322" stroke="#22D3EE" stroke-width="2"/>
+  <circle cx="700" cy="300" r="11" fill="#0B1322" stroke="#F59E0B" stroke-width="2"/>
+  <circle cx="700" cy="300" r="22" fill="none" stroke="#F59E0B" stroke-opacity="0.25" stroke-width="1"/>
+  <circle cx="200" cy="340" r="5" fill="#0B1322" stroke="#475569" stroke-width="1.5"/>
+  <circle cx="310" cy="286" r="5" fill="#0B1322" stroke="#475569" stroke-width="1.5"/>
+  <circle cx="420" cy="330" r="5" fill="#0B1322" stroke="#475569" stroke-width="1.5"/>
+  <circle cx="530" cy="268" r="5" fill="#0B1322" stroke="#475569" stroke-width="1.5"/>
+  <circle cx="650" cy="324" r="5" fill="#0B1322" stroke="#475569" stroke-width="1.5"/>
+
+  <g transform="translate(650 180)">
+    <rect x="-44" y="-8" width="88" height="16" rx="8" fill="#0F1D33" stroke="#334155"/>
+    <path d="M-44 0H-78M44 0H78" stroke="#64748B" stroke-width="2"/>
+    <circle cx="-78" cy="0" r="6" stroke="#64748B" stroke-width="1.5"/>
+    <circle cx="78" cy="0" r="6" stroke="#64748B" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="12" fill="#0891B2" opacity="0.2" stroke="#22D3EE" stroke-width="1.5"/>
+  </g>
+
+  <rect x="130" y="622" width="628" height="0" fill="none"/>
+  <rect x="782" y="250" width="292" height="362" rx="14" fill="#0E192B" stroke="#1E293B"/>
+  <text x="806" y="282" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" letter-spacing="1.5">KNN SIMILARITY MATCH</text>
+  <rect x="806" y="300" width="244" height="92" rx="10" fill="#0B1322" stroke="#1E293B"/>
+  <rect x="820" y="314" width="64" height="64" rx="8" fill="#0F1D33" stroke="#22D3EE" stroke-opacity="0.25"/>
+  <path d="M836 360L850 334L864 360Z" stroke="#22D3EE" stroke-opacity="0.5" stroke-width="1.5"/>
+  <rect x="900" y="322" width="104" height="9" rx="4" fill="#94A3B8" opacity="0.6"/>
+  <rect x="900" y="342" width="76" height="7" rx="3" fill="#475569"/>
+  <rect x="900" y="360" width="120" height="6" rx="3" fill="#22D3EE" opacity="0.45"/>
+
+  <text x="806" y="426" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" letter-spacing="1.5">ROUTE COST</text>
+  <rect x="806" y="442" width="244" height="70" rx="10" fill="#0B1322" stroke="#1E293B"/>
+  <text x="824" y="472" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="600">Dijkstra</text>
+  <text x="824" y="494" fill="#64748B" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11">Minimum-cost path over weighted edges</text>
+
+  <rect x="806" y="530" width="244" height="64" rx="10" fill="#F59E0B" fill-opacity="0.06" stroke="#F59E0B" stroke-opacity="0.25"/>
+  <text x="824" y="554" fill="#FCD34D" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" letter-spacing="1">SAFETY IS A CONSTRAINT</text>
+  <text x="824" y="574" fill="#94A3B8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="10">Encode hazards into weights — not automatic</text>
+
+  <text x="96" y="704" fill="#475569" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" letter-spacing="2">PROJECT CONCEPT PLACEHOLDER</text>
+</svg>

@@ -23,16 +23,25 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   title: {
-    default: DATA.name,
-    template: `%s | ${DATA.name}`,
+    default: `${DATA.name} | Software Engineering Portfolio`,
+    template: `%s | ${DATA.shortName}`,
   },
   description: DATA.description,
+  authors: [{ name: DATA.name }],
+  keywords: [
+    "Bonginkosi Nxumalo",
+    "software engineering",
+    "computer science",
+    "graduate portfolio",
+    "backend development",
+    "University of Johannesburg",
+  ],
   openGraph: {
-    title: `${DATA.name}`,
+    title: `${DATA.name} | Software Engineering Portfolio`,
     description: DATA.description,
     url: DATA.url,
-    siteName: `${DATA.name}`,
-    locale: "en_US",
+    siteName: DATA.name,
+    locale: "en_ZA",
     type: "website",
   },
   robots: {
@@ -47,7 +56,8 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: `${DATA.name}`,
+    title: `${DATA.name} | Software Engineering Portfolio`,
+    description: DATA.description,
     card: "summary_large_image",
   },
   verification: {
@@ -70,23 +80,47 @@ export default function RootLayout({
           geistMono.variable
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="light">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
           <TooltipProvider delayDuration={0}>
-            <div className="absolute inset-0 top-0 left-0 right-0 h-[100px] overflow-hidden z-0">
+            <a
+              href="#main-content"
+              className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
+            >
+              Skip to content
+            </a>
+
+            <div className="pointer-events-none fixed inset-x-0 top-0 z-0 h-[420px] overflow-hidden opacity-70">
               <FlickeringGrid
                 className="h-full w-full"
                 squareSize={2}
-                gridGap={2}
+                gridGap={3}
+                color="#22d3ee"
+                maxOpacity={0.12}
                 style={{
-                  maskImage: "linear-gradient(to bottom, black, transparent)",
-                  WebkitMaskImage: "linear-gradient(to bottom, black, transparent)",
+                  maskImage:
+                    "linear-gradient(to bottom, black, transparent 85%)",
+                  WebkitMaskImage:
+                    "linear-gradient(to bottom, black, transparent 85%)",
                 }}
               />
             </div>
-            <div className="relative z-10 max-w-2xl mx-auto py-12 pb-24 sm:py-24 px-6">
-              {children}
-            </div>
+
             <Navbar />
+
+            <div className="relative z-10 mx-auto w-full max-w-6xl px-6 py-10 sm:py-14 lg:py-16">
+              {children}
+              <footer className="mt-20 border-t border-border/70 pt-6 text-center text-xs text-muted-foreground">
+                <p>
+                  © {new Date().getFullYear()} {DATA.name}. Built with Next.js
+                  and Tailwind CSS.
+                </p>
+              </footer>
+            </div>
           </TooltipProvider>
         </ThemeProvider>
       </body>

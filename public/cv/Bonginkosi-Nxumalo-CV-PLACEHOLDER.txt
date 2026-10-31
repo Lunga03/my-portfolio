@@ -1,0 +1,13 @@
+PLACEHOLDER CV FILE
+===================
+
+This is not a real CV. It exists so the "Download CV" button has a working,
+clearly identifiable placeholder target.
+
+To replace it:
+1. Add your CV to this folder (for example: Bonginkosi-Nxumalo-CV.pdf).
+2. Update the `contact.cv` value in src/data/resume.tsx to point to the new file.
+3. Optionally update the download button label in src/components/section/hero-section.tsx
+   and src/components/section/contact-section.tsx if the file format changes.
+
+Keep the final CV factual and consistent with the information on the portfolio.

@@ -1,143 +1,119 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
-
 import { Badge } from "@/components/ui/badge";
+import type { Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
-import Markdown from "react-markdown";
 
-function ProjectImage({ src, alt }: { src: string; alt: string }) {
-  const [imageError, setImageError] = useState(false);
-
-  if (!src || imageError) {
-    return <div className="w-full h-48 bg-muted" />;
-  }
-
-  return (
-    <img
-      src={src}
-      alt={alt}
-      className="w-full h-48 object-cover"
-      onError={() => setImageError(true)}
-    />
-  );
-}
-
-interface Props {
-  title: string;
-  href?: string;
-  description: string;
-  dates: string;
-  tags: readonly string[];
-  link?: string;
-  image?: string;
-  video?: string;
-  links?: readonly {
-    icon: React.ReactNode;
-    type: string;
-    href: string;
-  }[];
+interface ProjectCardProps {
+  project: Project;
+  index: number;
   className?: string;
 }
 
-export function ProjectCard({
-  title,
-  href,
-  description,
-  dates,
-  tags,
-  link,
-  image,
-  video,
-  links,
-  className,
-}: Props) {
+export function ProjectCard({ project, index, className }: ProjectCardProps) {
   return (
-    <div
+    <article
       className={cn(
-        "flex flex-col h-full border border-border rounded-xl overflow-hidden hover:ring-2 cursor-pointer hover:ring-muted transition-all duration-200",
+        "group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card/50 transition-all duration-300 hover:-translate-y-1 hover:border-sky-500/40 hover:shadow-xl hover:shadow-black/5 dark:hover:shadow-black/20",
         className
       )}
     >
-      <div className="relative shrink-0">
-        <Link
-          href={href || "#"}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block"
-        >
-          {video ? (
-            <video
-              src={video}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-48 object-cover"
-            />
-          ) : image ? (
-            <ProjectImage src={image} alt={title} />
-          ) : (
-            <div className="w-full h-48 bg-muted" />
-          )}
-        </Link>
-        {links && links.length > 0 && (
-          <div className="absolute top-2 right-2 flex flex-wrap gap-2">
-            {links.map((link, idx) => (
-              <Link
-                href={link.href}
-                key={idx}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-              >
+      <Link
+        href={`/projects/${project.slug}`}
+        className="relative block aspect-[16/10] overflow-hidden bg-muted"
+        aria-label={`View the ${project.title} case study`}
+      >
+        <img
+          src={project.image}
+          alt={project.imageAlt}
+          className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+          loading="lazy"
+          decoding="async"
+        />
+        <span className="absolute left-4 top-4 rounded-full border border-white/10 bg-black/55 px-2.5 py-1 font-mono text-[10px] font-medium tracking-widest text-white/80 backdrop-blur">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+      </Link>
+
+      <div className="flex flex-1 flex-col gap-4 p-6">
+        <div className="flex flex-col gap-2">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-sky-700 dark:text-cyan-400">
+            {project.category}
+          </span>
+          <h3 className="text-lg font-semibold leading-snug tracking-tight">
+            <Link
+              href={`/projects/${project.slug}`}
+              className="transition-colors hover:text-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 dark:hover:text-cyan-300"
+            >
+              {project.title}
+            </Link>
+          </h3>
+        </div>
+
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          {project.cardDescription}
+        </p>
+
+        {project.technologies.length > 0 ? (
+          <ul className="flex flex-wrap gap-1.5">
+            {project.technologies.slice(0, 4).map((technology) => (
+              <li key={technology}>
                 <Badge
-                  className="flex items-center gap-1.5 text-xs bg-black text-white hover:bg-black/90"
-                  variant="default"
+                  variant="outline"
+                  className="h-6 border-border bg-background/50 px-2 text-[11px] font-normal text-muted-foreground"
                 >
-                  {link.icon}
-                  {link.type}
+                  {technology}
                 </Badge>
-              </Link>
+              </li>
             ))}
-          </div>
+            {project.technologies.length > 4 ? (
+              <li>
+                <Badge
+                  variant="outline"
+                  className="h-6 border-border bg-background/50 px-2 text-[11px] font-normal text-muted-foreground"
+                >
+                  +{project.technologies.length - 4}
+                </Badge>
+              </li>
+            ) : null}
+          </ul>
+        ) : (
+          <p className="text-[11px] italic text-muted-foreground">
+            Technologies to be added
+          </p>
         )}
-      </div>
-      <div className="p-6 flex flex-col gap-3 flex-1">
-        <div className="flex items-start justify-between gap-2">
-          <div className="flex flex-col gap-1">
-            <h3 className="font-semibold">{title}</h3>
-            <time className="text-xs text-muted-foreground">{dates}</time>
-          </div>
+
+        <div className="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-border pt-4">
           <Link
-            href={href || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-            aria-label={`Open ${title}`}
+            href={`/projects/${project.slug}`}
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground transition-colors hover:text-sky-700 dark:hover:text-cyan-300"
           >
-            <ArrowUpRight className="h-4 w-4" aria-hidden />
+            View case study
+            <ArrowUpRight className="size-3.5" aria-hidden />
           </Link>
+
+          {project.githubUrl ? (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <Github className="size-3.5" aria-hidden />
+              GitHub
+            </a>
+          ) : (
+            <span
+              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground/70"
+              title="Repository link placeholder — add it in src/data/projects.ts"
+            >
+              <Github className="size-3.5" aria-hidden />
+              Repository placeholder
+            </span>
+          )}
         </div>
-        <div className="text-xs flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
-          <Markdown>{description}</Markdown>
-        </div>
-        {tags && tags.length > 0 && (
-          <div className="flex flex-wrap gap-1 mt-auto">
-            {tags.map((tag) => (
-              <Badge
-                key={tag}
-                className="text-[11px] font-medium border border-border h-6 w-fit px-2"
-                variant="outline"
-              >
-                {tag}
-              </Badge>
-            ))}
-          </div>
-        )}
       </div>
-    </div>
+    </article>
   );
 }
